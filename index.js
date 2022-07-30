@@ -1,28 +1,36 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 const { useState, useEffect, useRef } = React;
 const clientID = "t-FQWYk2PUt13LidWIblzu7SNd9HVOQsK3QA7Lg1Mg4";
-const utm = "?utm_source=scrimba_degree&utm_medium=referral"
-var API_KEY = 'NpRvp4rxQt7jYkbu95fWvCMrZKxyQKlWcNZfzeopGfI';
-
+const utm = "?utm_source=scrimba_degree&utm_medium=referral";
+var API_KEY = "NpRvp4rxQt7jYkbu95fWvCMrZKxyQKlWcNZfzeopGfI";
 
 const loadData = (options) => {
   fetch(options.url)
-    .then(function(response){
-        return response.json()
+    .then(function (response) {
+      return response.json();
     })
-    .then(function(data){ 
-       if (options.onSuccess) options.onSuccess(data)
-    })
-}
+    .then(function (data) {
+      if (options.onSuccess) options.onSuccess(data);
+    });
+};
 
 const App = (props) => {
   let [photos, setPhotos] = useState([]);
-  
+
   // CHALLENGE:
   // Change the query to one of your interests
-  let [query, setQuery] = useState("vampires");
+  let [query, setQuery] = useState("");
+  const [queryHolder, setQueryHolder] = useState("");
   const queryInput = useRef(null);
+
+  const handleChange = (e) => {
+    setQueryHolder(e.target.value);
+  };
+
+  const changeQuery = () => {
+    setQuery(queryHolder);
+  };
 
   const numberOfPhotos = 20;
   const url =
@@ -36,47 +44,59 @@ const App = (props) => {
 
     loadData({
       url: photosUrl,
-      onSuccess: res => {
+      onSuccess: (res) => {
         setPhotos(res);
-      }
+      },
     });
   }, [query, url]);
 
-  const searchPhotos = e => {
+  const searchPhotos = (e) => {
     e.preventDefault();
     setQuery(queryInput.current.value);
   };
-  
+
   return (
     <div className="box">
+      <div className="search-container">
+        <input
+          className="search-box"
+          type="text"
+          value={queryHolder}
+          placeholder="enter any search term to see related images"
+          onChange={handleChange}
+        />
+        <button className="search-button" onClick={changeQuery}>
+          search
+        </button>
+      </div>
+
       <h2>{props.emoji}</h2>
       <h1>{props.name}'s website</h1>
       <div className="grid">
-      { query ?
-          photos.map(photo => {
-          return (
-            <div key={photo.id} className="item">
-              <img
-                className="img"
-                src={photo.urls.regular}
-              />
-              <div className="caption">
-                <span className="credits">Photo by 
-                  <a href={photo.user.links.html + utm}>   {photo.user.name} 
-                  </a>
-                  <span> on </span> 
-                  <a href={"https://unsplash.com" + utm}>
-                    Unsplash
-                  </a>
-                </span>
-              </div>
-            </div>
-            );
-        }) : ""}
+        {query
+          ? photos.map((photo) => {
+              return (
+                <div key={photo.id} className="item">
+                  <img className="img" src={photo.urls.regular} />
+                  <div className="caption">
+                    <span className="credits">
+                      Photo by
+                      <a href={photo.user.links.html + utm}>
+                        {" "}
+                        {photo.user.name}
+                      </a>
+                      <span> on </span>
+                      <a href={"https://unsplash.com" + utm}>Unsplash</a>
+                    </span>
+                  </div>
+                </div>
+              );
+            })
+          : ""}
       </div>
     </div>
   );
 };
 
 // CHALLENGE: add your own name and emoji to the website
-ReactDOM.render(<App name="Per" emoji="🎉"/>, document.getElementById("root"));
+ReactDOM.render(<App name="Per" emoji="🎉" />, document.getElementById("root"));

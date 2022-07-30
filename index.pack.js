@@ -565,7 +565,7 @@ var useState = _react2.default.useState,
 
 var clientID = "t-FQWYk2PUt13LidWIblzu7SNd9HVOQsK3QA7Lg1Mg4";
 var utm = "?utm_source=scrimba_degree&utm_medium=referral";
-var API_KEY = 'NpRvp4rxQt7jYkbu95fWvCMrZKxyQKlWcNZfzeopGfI';
+var API_KEY = "NpRvp4rxQt7jYkbu95fWvCMrZKxyQKlWcNZfzeopGfI";
 
 var loadData = function loadData(options) {
   fetch(options.url).then(function (response) {
@@ -585,18 +585,31 @@ var App = function App(props) {
   // Change the query to one of your interests
 
 
-  var _useState3 = useState("vampires"),
+  var _useState3 = useState(""),
       _useState4 = _slicedToArray(_useState3, 2),
       query = _useState4[0],
       setQuery = _useState4[1];
 
+  var _useState5 = useState(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      queryHolder = _useState6[0],
+      setQueryHolder = _useState6[1];
+
   var queryInput = useRef(null);
+
+  var handleChange = function handleChange(e) {
+    setQueryHolder(e.target.value);
+  };
+
+  var changeQuery = function changeQuery() {
+    setQuery(queryHolder);
+  };
 
   var numberOfPhotos = 20;
   var url = "https://api.unsplash.com/photos/random/?count=" + numberOfPhotos + "&client_id=" + clientID;
 
   useEffect(function () {
-    var photosUrl = query ? url + '&query=' + query : url;
+    var photosUrl = query ? url + "&query=" + query : url;
 
     loadData({
       url: photosUrl,
@@ -612,52 +625,65 @@ var App = function App(props) {
   };
 
   return _react2.default.createElement(
-    'div',
-    { className: 'box' },
+    "div",
+    { className: "box" },
     _react2.default.createElement(
-      'h2',
+      "div",
+      { className: "search-container" },
+      _react2.default.createElement("input", {
+        className: "search-box",
+        type: "text",
+        value: queryHolder,
+        placeholder: "enter any search term to see related images",
+        onChange: handleChange
+      }),
+      _react2.default.createElement(
+        "button",
+        { className: "search-button", onClick: changeQuery },
+        "search"
+      )
+    ),
+    _react2.default.createElement(
+      "h2",
       null,
       props.emoji
     ),
     _react2.default.createElement(
-      'h1',
+      "h1",
       null,
       props.name,
-      '\'s website'
+      "'s website"
     ),
     _react2.default.createElement(
-      'div',
-      { className: 'grid' },
+      "div",
+      { className: "grid" },
       query ? photos.map(function (photo) {
         return _react2.default.createElement(
-          'div',
-          { key: photo.id, className: 'item' },
-          _react2.default.createElement('img', {
-            className: 'img',
-            src: photo.urls.regular
-          }),
+          "div",
+          { key: photo.id, className: "item" },
+          _react2.default.createElement("img", { className: "img", src: photo.urls.regular }),
           _react2.default.createElement(
-            'div',
-            { className: 'caption' },
+            "div",
+            { className: "caption" },
             _react2.default.createElement(
-              'span',
-              { className: 'credits' },
-              'Photo by',
+              "span",
+              { className: "credits" },
+              "Photo by",
               _react2.default.createElement(
-                'a',
+                "a",
                 { href: photo.user.links.html + utm },
-                '   ',
+                " ",
                 photo.user.name
               ),
               _react2.default.createElement(
-                'span',
+                "span",
                 null,
-                ' on '
+                " on "
               ),
               _react2.default.createElement(
-                'a',
+                "a",
                 { href: "https://unsplash.com" + utm },
-                'Unsplash'
+                "Unsplash"
               )
             )
           )
@@ -668,7 +694,7 @@ var App = function App(props) {
 };
 
 // CHALLENGE: add your own name and emoji to the website
-_reactDom2.default.render(_react2.default.createElement(App, { name: 'Per', emoji: '\uD83C\uDF89' }), document.getElementById("root"));
+_reactDom2.default.render(_react2.default.createElement(App, { name: "Per", emoji: "\uD83C\uDF89" }), document.getElementById("root"));
 
 /***/ }),
 /* 7 */

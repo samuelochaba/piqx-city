@@ -1,75 +1,99 @@
 :root {
-    --wooden: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Horror/wooden.jpg);
-    --forest: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Horror/forest.jpg);
-    --sweets: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Cute/sweets1.jpg);
-    --bubbles: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Cute/bubbles.jpg);
-    --crackle: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Minimalist/crackle.jpg);
-    --sparkle: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Minimalist/sparkle.jpg);
-    --rainbow: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Rainbow/rainbow-paint.jpg);
-    --smoke: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Rainbow/rainbow-smoke.jpg);
-    --nightsky: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Sleek/nightsky.jpg);
-    --sunset: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Sleek/sunset.jpg);
+  --wooden: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Horror/wooden.jpg);
+  --forest: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Horror/forest.jpg);
+  --sweets: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Cute/sweets1.jpg);
+  --bubbles: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Cute/bubbles.jpg);
+  --crackle: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Minimalist/crackle.jpg);
+  --sparkle: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Minimalist/sparkle.jpg);
+  --rainbow: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Rainbow/rainbow-paint.jpg);
+  --smoke: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Rainbow/rainbow-smoke.jpg);
+  --nightsky: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Sleek/nightsky.jpg);
+  --sunset: url(https://scrimba.ams3.digitaloceanspaces.com/assets/courses/gdegree/Sleek/sunset.jpg);
 
-    
-    /* COLORS */
-    --blood: #8a0303;
-    --slime: #228B22;
-    --gloom: #2B363B;
-    --candy: #ee698e;
-    --purple: #7B1E7A;
-    --blue: #2176AE;
-    --olive: #A6C48A;    
-    --royal: #0A1045;
-    --lilac: #B8AED6;
-    --snow: #f4f9e9;
-    
-    /* FONTS */
-    --scary-font: 'Metal Mania';
-    --typewriter-font: 'Inconsolata';
-    --funny-font: 'Balsamiq Sans';
-    --curly-font: 'Pacifico';
-    --old-style-font: 'Cinzel';
-    --simple-font: 'Noto Sans HK';
-    --funky-font: 'MuseoModerno';
-    --sweet-font: 'Lobster';
+  /* COLORS */
+  --blood: #8a0303;
+  --slime: #228b22;
+  --gloom: #2b363b;
+  --candy: #ee698e;
+  --purple: #7b1e7a;
+  --blue: #2176ae;
+  --olive: #a6c48a;
+  --royal: #0a1045;
+  --lilac: #b8aed6;
+  --snow: #f4f9e9;
+
+  /* FONTS */
+  --scary-font: "Metal Mania";
+  --typewriter-font: "Inconsolata";
+  --funny-font: "Balsamiq Sans";
+  --curly-font: "Pacifico";
+  --old-style-font: "Cinzel";
+  --simple-font: "Noto Sans HK";
+  --funky-font: "MuseoModerno";
+  --sweet-font: "Lobster";
 }
-
 
 body {
-    /*
+  /*
     CHALLENGE: change the background to one you like
     */
-    --background-image: var(--forest);
-    
-    /*
+  --background-image: var(--forest);
+
+  /*
     CHALLENGE: change the main color to one you like!
     */
-    --main-color: var(--blood);
-    
-     /* 
+  --main-color: var(--blood);
+
+  /* 
     CHALLENGE: change the font to one you think is cool
     */
-    font-family: var(--scary-font);
+  font-family: var(--scary-font);
 }
-
 
 .grid {
-    /* 
+  /* 
     BONUS CHALLENGE: adjust how many columns you'd like to have
     */
-   column-count: 3;
-   column-gap: 10px;
+  column-count: 3;
+  column-gap: 10px;
 }
 
+.search-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-box {
+  color: var(--blood);
+  outline: none;
+  border-image: var(--rainbow) 100;
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  min-width: 50%;
+}
+.search-box::placeholder {
+  color: var(--blood);
+}
+.search-button {
+  padding: 0.5rem;
+  min-width: 10%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--blood);
+}
 
 .img {
-    /* 
+  /* 
     BONUS CHALLENGE: uncomment the code below, 
     and choose your favourite border
     */
-    
-    
-    /* border-image: var(--sweets) 100; */
-   
-}
 
+  border-image: var(--rainbow) 100;
+}
