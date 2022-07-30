@@ -651,8 +651,7 @@ var App = function App(props) {
     _react2.default.createElement(
       "h1",
       null,
-      props.name,
-      "'s website"
+      props.name
     ),
     _react2.default.createElement(
       "div",
@@ -694,7 +693,7 @@ var App = function App(props) {
 };
 
 // CHALLENGE: add your own name and emoji to the website
-_reactDom2.default.render(_react2.default.createElement(App, { name: "Per", emoji: "\uD83C\uDF89" }), document.getElementById("root"));
+_reactDom2.default.render(_react2.default.createElement(App, { name: "piqxCITY", emoji: "\uD83C\uDF89" }), document.getElementById("root"));
 
 /***/ }),
 /* 7 */

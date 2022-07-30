@@ -71,7 +71,7 @@ const App = (props) => {
       </div>
 
       <h2>{props.emoji}</h2>
-      <h1>{props.name}'s website</h1>
+      <h1>{props.name}</h1>
       <div className="grid">
         {query
           ? photos.map((photo) => {
@@ -99,4 +99,7 @@ const App = (props) => {
 };
 
 // CHALLENGE: add your own name and emoji to the website
-ReactDOM.render(<App name="Per" emoji="🎉" />, document.getElementById("root"));
+ReactDOM.render(
+  <App name="piqxCITY" emoji="🎉" />,
+  document.getElementById("root")
+);
